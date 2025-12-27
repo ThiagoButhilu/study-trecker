@@ -32,6 +32,7 @@ const totalHours = ref(0)
 
 function submit() {
   if (!title.value || totalHours.value <= 0) return
+  console.log('Submitting study:', { title: title.value, category: category.value, totalHours: totalHours.value })
 
   store.addStudy({
     title: title.value,

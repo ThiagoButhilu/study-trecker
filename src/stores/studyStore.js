@@ -8,14 +8,15 @@ export const useStudyStore = defineStore('study', () => {
 
   // ACTIONS
   function addStudy(data) {
+    console.log('Adding study:', data)
     studies.value.push({
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       title: data.title,
       category: data.category,
       totalHours: data.totalHours,
       studiedHours: 0,
       status: 'planned',
-      createdAt: new Date()
+      createdAt: new Date().toISOString()
     })
   }
 
@@ -37,12 +38,10 @@ export const useStudyStore = defineStore('study', () => {
     }
   }
 
-  // GETTERS (computed)
-  const totalStudiedHours = computed(() => {
-    return studies.value.reduce((total, study) => {
-      return total + study.studiedHours
-    }, 0)
-  })
+  // GETTERS
+  const totalStudiedHours = computed(() =>
+    studies.value.reduce((total, study) => total + study.studiedHours, 0)
+  )
 
   // PERSISTÊNCIA
   watch(
@@ -55,6 +54,8 @@ export const useStudyStore = defineStore('study', () => {
 
   function loadStudies() {
     const data = localStorage.getItem('studies')
+    console.log('Loading studies from localStorage:', data)
+    console.log(studies)
     if (data) {
       studies.value = JSON.parse(data)
     }

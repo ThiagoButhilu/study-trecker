@@ -17,10 +17,18 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useStudyStore } from '../stores/studyStore'
+import { storeToRefs } from 'pinia'
 
 const store = useStudyStore()
-const studies = store.studies
+
+// ✅ forma correta
+const { studies } = storeToRefs(store)
+
+onMounted(() => {
+  store.loadStudies()
+})
 
 function addHour(id) {
   store.addStudyHours(id, 1)
