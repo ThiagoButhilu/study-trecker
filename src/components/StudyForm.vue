@@ -1,38 +1,44 @@
 <template>
   <form
     @submit.prevent="submit"
-    class="bg-white p-4 rounded-lg shadow-md mb-6 space-y-4"
+    class="bg-zinc-900 p-6 rounded-xl shadow space-y-4"
   >
-    <h2 class="text-lg font-semibold text-gray-800">
+    <h2 class="text-lg font-semibold text-zinc-100">
       Novo Estudo
     </h2>
 
     <input
       v-model="title"
       placeholder="Título do estudo"
-      class="w-full border border-gray-300 rounded px-3 py-2
-             focus:outline-none focus:ring-2 focus:ring-blue-500"
+      class="w-full rounded-lg px-3 py-2
+             bg-zinc-800 border border-zinc-700 text-zinc-100
+             placeholder-zinc-400
+             focus:outline-none focus:ring-2 focus:ring-purple-600"
     />
 
     <input
       v-model="category"
       placeholder="Categoria"
-      class="w-full border border-gray-300 rounded px-3 py-2
-             focus:outline-none focus:ring-2 focus:ring-blue-500"
+      class="w-full rounded-lg px-3 py-2
+             bg-zinc-800 border border-zinc-700 text-zinc-100
+             placeholder-zinc-400
+             focus:outline-none focus:ring-2 focus:ring-purple-600"
     />
 
     <input
       v-model.number="totalHours"
       type="number"
       placeholder="Horas totais"
-      class="w-full border border-gray-300 rounded px-3 py-2
-             focus:outline-none focus:ring-2 focus:ring-blue-500"
+      class="w-full rounded-lg px-3 py-2
+             bg-zinc-800 border border-zinc-700 text-zinc-100
+             placeholder-zinc-400
+             focus:outline-none focus:ring-2 focus:ring-purple-600"
     />
 
     <button
       type="submit"
-      class="w-full bg-blue-600 text-white font-medium py-2 rounded
-             hover:bg-blue-700 transition"
+      class="w-full bg-purple-600 text-white font-medium py-2 rounded-lg
+             hover:bg-purple-700 transition"
     >
       Adicionar estudo
     </button>

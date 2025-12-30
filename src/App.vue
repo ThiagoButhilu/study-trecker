@@ -1,5 +1,18 @@
 <template>
-  <main class="min-h-screen bg-zinc-950 text-zinc-100 flex justify-center px-4 py-10">
+  <main
+    class="
+      min-h-screen
+      bg-gradient-to-br
+      from-purple-950
+      via-zinc-950
+      to-indigo-950
+      text-zinc-100
+      flex
+      justify-center
+      px-4
+      py-10
+    "
+  >
     <div class="w-full max-w-2xl space-y-8">
 
       <!-- Header -->
@@ -13,12 +26,12 @@
       </header>
 
       <!-- Form -->
-      <section class="bg-zinc-900 rounded-xl p-6 shadow">
+      <section class="bg-zinc-900/90 backdrop-blur rounded-xl p-6 shadow-lg">
         <StudyForm />
       </section>
 
       <!-- List -->
-      <section class="bg-zinc-900 rounded-xl p-6 shadow">
+      <section class="bg-zinc-900/90 backdrop-blur rounded-xl p-6 shadow-lg">
         <StudyList />
       </section>
 

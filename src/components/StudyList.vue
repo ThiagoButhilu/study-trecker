@@ -1,6 +1,6 @@
 <template>
   <section v-if="studies.length" class="mt-8">
-    <h2 class="text-xl font-semibold mb-4 text-gray-800">
+    <h2 class="text-xl font-semibold mb-4 text-zinc-200">
       Meus Estudos
     </h2>
 
@@ -8,20 +8,20 @@
       <li
         v-for="study in studies"
         :key="study.id"
-        class="p-4 border rounded-lg bg-white shadow-sm flex flex-col gap-3"
+        class="p-4 rounded-xl bg-zinc-900 border border-zinc-800 shadow flex flex-col gap-3"
       >
         <!-- Título -->
         <div class="flex justify-between items-start">
-          <strong class="text-lg text-gray-900">
+          <strong class="text-lg text-zinc-100">
             {{ study.title }}
           </strong>
 
           <span
-            class="text-sm px-2 py-1 rounded-full"
+            class="text-xs px-2 py-1 rounded-full font-medium"
             :class="{
-              'bg-gray-100 text-gray-600': study.status === 'planned',
-              'bg-blue-100 text-blue-700': study.status === 'studying',
-              'bg-green-100 text-green-700': study.status === 'completed'
+              'bg-zinc-800 text-zinc-400': study.status === 'planned',
+              'bg-indigo-500/20 text-indigo-400': study.status === 'studying',
+              'bg-emerald-500/20 text-emerald-400': study.status === 'completed'
             }"
           >
             {{ study.status }}
@@ -29,14 +29,14 @@
         </div>
 
         <!-- Progresso -->
-        <div class="text-sm text-gray-600">
+        <div class="text-sm text-zinc-400">
           {{ study.studiedHours }} / {{ study.totalHours }} horas
         </div>
 
         <!-- Barra de progresso -->
-        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+        <div class="w-full bg-zinc-800 rounded-full h-2 overflow-hidden">
           <div
-            class="h-full bg-blue-500 transition-all"
+            class="h-full bg-indigo-500 transition-all"
             :style="{ width: `${(study.studiedHours / study.totalHours) * 100}%` }"
           />
         </div>
@@ -45,14 +45,14 @@
         <div class="flex gap-2 pt-2">
           <button
             @click="addHour(study.id)"
-            class="px-3 py-1 text-sm rounded bg-blue-600 text-white hover:bg-blue-700 transition"
+            class="px-3 py-1 text-sm rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
           >
             +1h
           </button>
 
           <button
             @click="remove(study.id)"
-            class="px-3 py-1 text-sm rounded bg-red-500 text-white hover:bg-red-600 transition"
+            class="px-3 py-1 text-sm rounded bg-rose-600 text-white hover:bg-rose-700 transition"
           >
             Remover
           </button>
@@ -61,7 +61,7 @@
     </ul>
   </section>
 
-  <p v-else class="mt-8 text-gray-500 text-center">
+  <p v-else class="mt-8 text-zinc-500 text-center">
     Nenhum estudo cadastrado.
   </p>
 </template>
@@ -72,8 +72,6 @@ import { useStudyStore } from '../stores/studyStore'
 import { storeToRefs } from 'pinia'
 
 const store = useStudyStore()
-
-// ✅ forma correta
 const { studies } = storeToRefs(store)
 
 onMounted(() => {
